@@ -13,12 +13,11 @@ function User() {
             });
     };
 
-    useEffect(() => {
-        fetchData()
-    }, [])
+
 
     return (
         <>
+        
             <h1>{data.name}</h1>
             <p>{data.type}</p>
             <p>{data.ci}</p>
@@ -28,3 +27,4 @@ function User() {
     );
 }
 export default User;
+

@@ -1,0 +1,8 @@
+.react-confirm-alert-overlay {
+    background-color: transparent;
+}
+
+.react-confirm-alert-button-group > button {
+
+    background-color: rgba(255, 0, 0, 0.74);
+}

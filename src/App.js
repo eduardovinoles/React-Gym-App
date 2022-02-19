@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Routes, Route, Link } from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
 import tasks from './sample/task.json'
-import { Row } from 'react-bootstrap';
-
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 //Components
 import NavBar from './components/NavBar'
 import Tasks from './components/Tasks';
 import TaskForm from './components/TaskForm';
-import Posts from './components/Posts';
+import Users from './components/Users';
 import Home from './components/Home'
 import User from './components/User'
-
+import Footer from './components/Footer'
 
 class App extends Component {
 
@@ -49,12 +47,9 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App'>
+      <div className='App' style={{ backgroundColor: "black", fontSize: "4vh" }}>
         <BrowserRouter>
-
-          <Row>
-            <NavBar />
-          </Row>
+          <NavBar />
           <Routes>
             <Route path="/" element={<Home />}>
             </Route>
@@ -70,19 +65,20 @@ class App extends Component {
                 </div>
               }>
             </Route>
-            <Route path="/Posts" element={
+            <Route path="/Users" element={
               <div>
-                <Posts />
+                <Users /> 
               </div>
             }>
             </Route>
-            <Route path="/Posts/User/:_id" element={
+            <Route path="/Users/User/:_id" element={
               <div>
                 <User />
               </div>
             }>
             </Route>
           </Routes>
+          <Footer />
         </BrowserRouter>
       </div>
     )
