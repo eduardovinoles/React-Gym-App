@@ -1,14 +1,19 @@
 import { React, useState, useEffect} from 'react'
-import { Button, Table } from 'react-bootstrap';
-import MyModal from './TestModal.js'
-
-
+import { Button, Table, Row  } from 'react-bootstrap';
+import EditUserModal from './EditUserModal.js'
+import NewUserModal from './NewUserModal.js'
+import LoadingSpinner from './LoadingSpinner'
 
 function Users() {
 
-  const [modalShow, setModalShow] = useState(false);
+  const [editModalShow, setModalShow] = useState(false);
+  const [newUserModalShow, setNewUserModalShow] = useState(false);
   const [userModified, setState] = useState(false)
   const [users, setUsers] = useState(null)
+  const [isLoading, setIsLoading] = useState(false);
+
+  
+  
 
   const [userModal, setUserModal] = useState({
     name: "",
@@ -20,15 +25,19 @@ function Users() {
 
 
   useEffect(() => {
-
+    setIsLoading(true)
     fetch('https://gym-app-back.herokuapp.com/user')
       .then(response => response.json())
       .then(data => {
         setUsers(data)
+        setIsLoading(false)
       });
+      
 
   }, [userModified]);
 
+  
+  
   const changeState = () => {
     if (userModified === false) {
       setState(true)
@@ -41,6 +50,23 @@ function Users() {
     })
     setUserModal(user)
     setModalShow(true)
+  }
+
+  const newUser = (newUser) => {
+    console.log("test")
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(newUser)
+    }
+
+    fetch(`https://gym-app-back.herokuapp.com/user`, requestOptions)
+    .then(response => console.log('New User Created Successfully'))
+    .then(changeState)
+    .catch(error => console.log('Error', error))
+
+
   }
 
   const modifyUser = (user) => {
@@ -73,15 +99,27 @@ function Users() {
     <>
       <div style={{
         textAlign: "left", fontFamily: "Black Ops One",
-        fontSize: "2vh", color: "chartreuse", verticalAlign: "middle", margin: "5% 5% 10% 5%"
+        fontSize: "2vh", color: "chartreuse", verticalAlign: "middle", margin: "0% 5% 10% 5%"
       }}>
-        <MyModal
+         {isLoading ? <LoadingSpinner /> : modifyUser}
+        <EditUserModal
           modifyUser={modifyUser}
-          show={modalShow}
+          show={editModalShow}
           onHide={() => setModalShow(false)}
           userModal={userModal}
           deleteUser={deleteUser}
         />
+        <NewUserModal
+          show={newUserModalShow}
+          onHide={() => setNewUserModalShow(false)}
+          newUser={newUser}
+        /> 
+        <Row>
+        <div>
+          <Button style={{float:"right", margin: "2% 0% 2% 0%"}} onClick={(e) => {setNewUserModalShow(true) }} >Create User</Button>
+        </div>
+        </Row>
+        <Row>
         <Table striped bordered hover variant="dark" responsive="sm">
           <thead>
             <tr style={{ color: "chartreuse" }}>
@@ -109,6 +147,7 @@ function Users() {
             )}
           </tbody>
         </Table>
+        </Row>
       </div>
     </>
   )

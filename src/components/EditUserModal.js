@@ -2,9 +2,9 @@ import { React, useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import './testModal.css'
+import './editUserModal.css'
 
-function MyModal(props) {
+function EditUserModal(props) {
 
     const [user, setUser] = useState()
 
@@ -43,7 +43,7 @@ function MyModal(props) {
                 {
                     label: 'No',
                 }
-            ]
+            ],
         });
     }
 
@@ -51,7 +51,7 @@ function MyModal(props) {
     return (
         <Modal
             {...props}
-            size="lg"
+            style={{ fontFamily: "Black Ops One" }}
             aria-labelledby="contained-modal-title-vcenter"
             centered>
             <Modal.Header closeButton>
@@ -62,24 +62,26 @@ function MyModal(props) {
             <Modal.Body>
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formUserModal" >
+                        <Form.Label>Name</Form.Label>
+                        <Form.Control type="text" placeholder="" className='text-capitalize' name="name" defaultValue={props.userModal.name} onChange={handleChange} />
                         <Form.Label>C.I</Form.Label>
                         <Form.Control type="text" placeholder="" name="ci" defaultValue={props.userModal.ci} onChange={handleChange} />
                         <Form.Label>Address</Form.Label>
-                        <Form.Control type="text" placeholder="" name="address" defaultValue={props.userModal.address} onChange={handleChange} />
+                        <Form.Control type="text" placeholder="" className='text-capitalize' name="address" defaultValue={props.userModal.address} onChange={handleChange} />
                         <Form.Label>Telephone</Form.Label>
                         <Form.Control type="number" placeholder="" name="tel" defaultValue={props.userModal.tel} onChange={handleChange} />
                         <Form.Label>Type</Form.Label>
-                        <Form.Control type="text" placeholder="" name="type" defaultValue={props.userModal.type} onChange={handleChange} />
+                        <Form.Control type="text" placeholder="" className='text-capitalize' name="type" defaultValue={props.userModal.type} onChange={handleChange} />
                     </Form.Group>
                     <Modal.Footer>
-                        <Button variant="primary" type="submit">Submit</Button>
-                        <Button type="button" onClick={(e) => { props.onHide(); confirmDelete() }}>Delete</Button>
+                        <Button variant="success" type="submit">Submit</Button>
+                        <Button variant="danger" type="button" onClick={(e) => { props.onHide(); confirmDelete() }}>Delete</Button>
                     </Modal.Footer>
                 </Form>
             </Modal.Body>
-        </Modal>
+        </Modal >
     );
 }
-export default MyModal
+export default EditUserModal
 
 

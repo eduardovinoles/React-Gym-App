@@ -7,11 +7,13 @@ import './home.css'
 import 'animate.css';
 import WebFont from 'webfontloader'
 
+
 WebFont.load({
     google: {
         families: ["Lobster Two", "Black Ops One"]
     }
 });
+
 
 const insideStyles = {
     background: "rgba(0, 0, 0, 0.6)",

@@ -1,5 +1,5 @@
 import React from "react"
-
+import { SocialIcon } from 'react-social-icons';
 
 const styles = {
     textAlign: "left",
@@ -17,26 +17,15 @@ const Footer = () => <footer style={styles} className="page-footer font-small bl
                 <p>blackdoggym@gmail.com</p>
             </div>
 
-            <hr className=" w-100 d-md-none pb-0"/>
+            <hr className=" w-100 d-md-none pb-0" />
 
-            <div className="col-md-3 mb-md-0 mb-3">
-                <h5 className="text-uppercase">Links</h5>
-                <ul style={{listStyleType:"none"}}>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
-            </div>
-
-            <div className="col-md-3 mb-md-0 mb-3">
-                <h5>Links</h5>
-                <ul style={{listStyleType:"none"}}>
-                    <li><a href="#!">Link 1</a></li>
-                    <li><a href="#!">Link 2</a></li>
-                    <li><a href="#!">Link 3</a></li>
-                    <li><a href="#!">Link 4</a></li>
-                </ul>
+            <div className="col-md-6 mb-md-0 mb-6">
+                <div >
+                    <div className="col-2" style={{ display: "inline-block" }}><SocialIcon url="https://www.linkedin.com/in/eduardo-vi%C3%B1oles" bgColor="#ff5a01" /></div>
+                    <div className="col-2" style={{ display: "inline-block" }}><SocialIcon network="twitter" /></div>
+                    <div className="col-2" style={{ display: "inline-block" }}><SocialIcon network="email" url="eduardovinoles@gmail.com" /></div>
+                    <div className="col-2" style={{ display: "inline-block" }}><SocialIcon network="whatsapp" url="tel:+059-092-426-352" /></div>
+                </div>
             </div>
         </div>
     </div>
