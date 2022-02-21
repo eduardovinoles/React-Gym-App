@@ -2,7 +2,7 @@ import { Parallax } from "react-parallax";
 import { ParallaxProvider, useParallax } from 'react-scroll-parallax'
 import { Fade, Slide, Reveal, Roll } from "react-awesome-reveal"
 import { keyframes } from "@emotion/react";
-import { Stack } from 'react-bootstrap';
+import { Stack, Row } from 'react-bootstrap';
 import './home.css'
 import 'animate.css';
 import WebFont from 'webfontloader'
@@ -44,7 +44,8 @@ const imgWorkout = {
 }
 
 const imgSize = {
-    width: "-webkit-fill-available"
+    width: "-webkit-fill-available",
+    margin: "0% 2%"
 }
 
 const customAnimation = keyframes`
@@ -129,8 +130,8 @@ function Home() {
                         </div>
                         <div style={{ display: "inline-block", width: "50%" }}>
                             <img src={'./img/gim5.jpg'} style={{ width: "100%", height: "auto", marginLeft: "-23%" }} alt="" />
-
                         </div>
+
                     </div>
                     <div style={{ marginTop: "5%", marginBottom: "5%" }}>
                         <div style={{ display: "inline-block", width: "50%" }}>
@@ -155,14 +156,14 @@ function Home() {
                             </Slide>
                         </Fade>
                     </div>
-                    <Parallax speed={5} bgImage={'./img/gim3.jpg'} strength={-100}>
-                        <div style={{ height: "70vh", marginTop: "10%", marginBottom: "10%" }}>
+                    <Parallax speed={5} style={imgSize} bgImage={'./img/gim3.jpg'} strength={-100}>
+                        <div style={{ height: "70vh" }}>
                             <AnimatedComponent>
                                 <div style={insideStyles}>Open from 6am to 23pm</div>
                             </AnimatedComponent>
                         </div>
                     </Parallax>
-                    <div style={{ marginBottom: "10%" }}>
+                    <div style={{ marginBottom: "0% 2% 10%" }}>
                         <div style={{ width: "80%", display: "inline-block", color: "white" }}>
                             <Fade cascade style={{ color: "white" }}>
                                 <Slide direction={"up"}>
@@ -179,10 +180,11 @@ function Home() {
                             </Fade>
                         </div>
                         <div style={{ width: "20%", display: "inline-block", verticalAlign: "top" }}>
-                            <img src={'./img/weightPlate.png'} style={{ width: "100%" }} alt="" />
+                            <img src={'./img/weightPlate.png'} style={{ width: "100%" }} alt="Weight plate." />
                         </div>
                     </div>
                     <Parallax speed={5}
+                        style={imgSize}
                         bgImage={'./img/gim4.jpg'}
                         strength={200}
                         renderLayer={(percentage) => (
@@ -214,7 +216,7 @@ function Home() {
 
                         </div>
                     </Parallax>
-                    <h2 style={{ color: "chartreuse" }}>BLACK DOG GYM</h2>
+                    <h2 style={{ color: "chartreuse", marginLeft: "2%" }}>BLACK DOG GYM</h2>
                 </div>
             </ParallaxProvider>
         </>
