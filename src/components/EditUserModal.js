@@ -2,7 +2,6 @@ import { React, useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
-import './editUserModal.css'
 
 function EditUserModal(props) {
 
@@ -47,11 +46,9 @@ function EditUserModal(props) {
         });
     }
 
-
     return (
         <Modal
             {...props}
-            style={{ fontFamily: "Black Ops One" }}
             aria-labelledby="contained-modal-title-vcenter"
             centered>
             <Modal.Header closeButton>
@@ -83,5 +80,3 @@ function EditUserModal(props) {
     );
 }
 export default EditUserModal
-
-

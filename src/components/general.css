@@ -1,0 +1,228 @@
+.app {
+    background-color: black;
+    font-size: 2vw;
+}
+
+body {
+    font-family: "Black Ops One";
+}
+
+.create-new-user-button {
+    float: right;
+    margin: 2% 0% 2% 0%;
+}
+
+.div-img {
+    display: inline-block;
+    width: 50%;
+}
+
+.display-block {
+    display: block;
+}
+
+.display-none {
+    display: none;
+}
+
+.form-page {
+    font-family: "Black Ops One";
+    font-size: 20px;
+    color: chartreuse;
+}
+
+.form-div {
+    display: block;
+    width: 500px;
+    padding: 30px;
+}
+
+.footer-styles {
+    text-align: left;
+    font-size: 3vh;
+}
+
+.gim5-img {
+    width: 100%;
+    height: auto;
+    margin-left: -23%;
+}
+
+.gim6-img {
+    width: 100%;
+    margin-left: 23%;
+}
+
+.home-div {
+    text-align: left;
+}
+
+.img-parallax {
+    width: -webKit-fill-available;
+    margin: 0% 2%;
+}
+
+.increasing-logo {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 51%;
+}
+
+.join-button {
+    width: 11vw;
+    color: white;
+}
+
+.join-button-h3 {
+    margin: 0%;
+    font-size: 2vw;
+}
+
+.loading-spinner {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    animation: spinner 1.5s linear infinite;
+}
+
+.logo-nav {
+    position: absolute;
+    margin-top: -5vh;
+    width: 5rem;
+    height: auto;
+}
+
+.main-title {
+    position: absolute;
+    right: 13%;
+    top: 14%;
+    text-align: center;
+    color: white;
+}
+
+.main-title img {
+    width: -webkit-fill-available;
+    margin: 0% 2%;
+}
+
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.modal-main {
+    position: fixed;
+    background: white;
+    width: 80%;
+    height: auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.parallax-text {
+    background-color: rgba(0, 0, 0, 0.6);
+    color: chartreuse;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    transform: translate(-20%, -20%);
+    margin-left: 10%;
+}
+
+.react-confirm-alert-overlay {
+    background-color: transparent;
+}
+
+.react-confirm-alert-button-group button {
+    background-color: rgba(255, 0, 0, 0.74);
+}
+
+.react-confirm-alert-body {
+    font-family: "Black Ops One";
+}
+
+.social-icons {
+    display: inline-block;
+}
+
+.spinner-container {
+    position: fixed;
+    z-index: 1;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    top: 40%;
+    left: 40%;
+}
+
+.style-navbar {
+    background: #7fff0066;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+}
+
+.text-slider {
+    color: white;
+    display: inline-block;
+    width: 48%;
+}
+
+.text-slider-h2 {
+    margin-left: 10%;
+    color: chartreuse;
+}
+
+.transparent-div-img-title {
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    width: -webKit-fill-available;
+    height: -webKit-fill-available;
+}
+
+.weightplate-div {
+    width: 20%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.welcome {
+    width: 80%;
+    display: inline-block;
+    color: white;
+}
+
+.workout-couple {
+    position: absolute;
+    top: 34%;
+    left: 61%;
+    z-index: 1;
+    width: 36%;
+}
+
+.users-div {
+    text-align: left;
+    font-size: 2vh;
+    color: chartreuse;
+    vertical-align: middle;
+    margin: 0% 5% 10% 5%;
+}
+
+@keyframes spinner {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}

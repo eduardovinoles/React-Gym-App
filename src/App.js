@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-//Components
+import './components/general.css'
 import NavBar from './components/NavBar'
 import ContactForm from './components/ContactForm';
 import Users from './components/Users';
@@ -10,10 +9,6 @@ import Home from './components/Home'
 import Footer from './components/Footer'
 
 class App extends Component {
-
-  state = {
-
-  }
 
   addTask = (title, description) => {
     const newTask = {
@@ -29,7 +24,6 @@ class App extends Component {
   deleteTask = (id) => {
     const newTasks = this.state.tasks.filter(task => task.id !== id)
     this.setState({ tasks: newTasks })
-
   }
 
   checkDone = (id) => {
@@ -44,7 +38,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className='App' style={{ backgroundColor: "black", fontSize: "2vw" }}>
+      <div className='app'>
         <BrowserRouter>
           <NavBar />
           <Routes>

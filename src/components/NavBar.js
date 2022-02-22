@@ -1,7 +1,6 @@
-import { Container, Navbar, Nav, Offcanvas, NavDropdown, Button } from 'react-bootstrap';
+import { Container, Navbar, Nav, Offcanvas, Button } from 'react-bootstrap';
 import { AttentionSeeker } from "react-awesome-reveal"
 import WebFont from 'webfontloader'
-
 
 WebFont.load({
     google: {
@@ -11,11 +10,11 @@ WebFont.load({
 
 function NavBar() {
     return (
-        <Navbar collapseOnSelect expand="false" variant="dark" className='nav-logo' style={{ backgroundColor: "#7fff0066", position: "sticky", top: 0, zIndex: 1 }}>
+        <Navbar collapseOnSelect expand="false" variant="dark" className="nav-logo style-navbar">
             <Container fluid className='m-1'>
 
-                <Navbar.Brand href="/" style={{ color: "black", zIndex: 1, marginTop: "5vh" }}>
-                    <img style={{ position: "absolute", marginTop: "-5vh", width: "5rem", height: "auto" }}
+                <Navbar.Brand href="/" style={{ marginTop: "5vh" }}>
+                    <img className="logo-nav"
                         href="/"
                         src="./img/logo.png"
                         width="100"
@@ -23,17 +22,15 @@ function NavBar() {
                         alt=""
                     />
                 </Navbar.Brand>
-                <Button variant="outline-success" href='/ContactForm' style={{ width: "11vw", fontFamily: "Black Ops One", color: 'white' }}>
-                    <h3 style={{ margin: 0, fontSize: "2vw" }}>Join Us</h3>
+                <Button variant="outline-success" href='/ContactForm' className="join-button">
+                    <h3 className="join-button-h3">Join Us</h3>
                 </Button>
                 <Navbar.Toggle aria-controls="offcanvasNavbar"/>
-
                 <Navbar.Offcanvas
                     id="offcanvasNavbar"
                     aria-labelledby="offcanvasNavbarLabel"
                     placement="end"
-                    style={{ width: "200px", fontFamily: "Black Ops One" }}
-                >
+                    style={{ width: "200px"}} >
                     <Offcanvas.Header closeButton>
                         <AttentionSeeker>
                             <Offcanvas.Title id="offcanvasNavbarLabel">Black Dog Gym</Offcanvas.Title>
@@ -44,14 +41,6 @@ function NavBar() {
                             <Nav.Link href='/' className='nav-text'>HOME</Nav.Link>
                             <Nav.Link href='/ContactForm' className='nav-text' >JOIN</Nav.Link>
                             <Nav.Link href='/Users' className='nav-text'>USERS</Nav.Link>
-                            <NavDropdown title="Dropdown" id="offcanvasNavbarDropdown">
-                                <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-                                <NavDropdown.Item href="#action4">Another action</NavDropdown.Item>
-                                <NavDropdown.Divider />
-                                <NavDropdown.Item href="#action5">
-                                    Else
-                                </NavDropdown.Item>
-                            </NavDropdown>
                         </Nav>
                     </Offcanvas.Body>
                 </Navbar.Offcanvas>

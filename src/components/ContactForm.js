@@ -3,18 +3,13 @@ import { Row, Form, Button } from 'react-bootstrap'
 
 function ContactForm() {
 
-
     return (
-        <div style={{ fontFamily: "Black Ops One", fontSize: "20px", color: "chartreuse" }}>
+        <div className="form-page">
             <Row>
                 <img src={'./img/join.png'} style={{ width: "100%" }} alt="" />
             </Row>
             <Row style={{ justifyContent: "center" }}>
-                <div style={{
-                    display: 'block',
-                    width: 500,
-                    padding: 30
-                }}>
+                <div className="form-div">
                     <Form>
                         <Form.Group>
                             <Form.Label>Enter your full name:</Form.Label>

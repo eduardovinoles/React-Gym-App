@@ -1,12 +1,10 @@
 import { Parallax } from "react-parallax";
 import { ParallaxProvider, useParallax } from 'react-scroll-parallax'
-import { Fade, Slide, Reveal, Roll } from "react-awesome-reveal"
+import { Fade, Slide, Reveal } from "react-awesome-reveal"
 import { keyframes } from "@emotion/react";
-import { Stack, Row } from 'react-bootstrap';
-import './home.css'
+import { Stack } from 'react-bootstrap';
 import 'animate.css';
 import WebFont from 'webfontloader'
-
 
 WebFont.load({
     google: {
@@ -14,39 +12,6 @@ WebFont.load({
     }
 });
 
-
-const insideStyles = {
-    background: "rgba(0, 0, 0, 0.6)",
-    color: "chartreuse",
-    padding: 20,
-    position: "absolute",
-    top: "50%",
-    left: "10%",
-    transform: "translate(-20%,-20%)",
-    marginLeft: "10%"
-}
-
-const styles = {
-    textAlign: "left",
-    fontFamily: "Black Ops One"
-}
-
-const styleStartImg = {
-    position: "relative",
-}
-
-const imgWorkout = {
-    position: "absolute",
-    top: "34%",
-    left: "24%",
-    zIndex: "1",
-    width: "65%"
-}
-
-const imgSize = {
-    width: "-webkit-fill-available",
-    margin: "0% 2%"
-}
 
 const customAnimation = keyframes`
 from {
@@ -62,10 +27,7 @@ function AnimatedComponent({ children }) {
     return <Reveal keyframes={customAnimation}>{children}</Reveal>;
 }
 
-
 function Home() {
-
-
     // eslint-disable-next-line no-mixed-operators
     const parallax = useParallax < HTMLDivElement > ({
         easing: 'easeOutQuad',
@@ -75,23 +37,23 @@ function Home() {
     return (
         <>
             <ParallaxProvider>
-                <div style={styles}>
-                    <div style={styleStartImg}>
-                        <div style={{ backgroundColor: "rgba(0, 0, 0, 0.3)", position: "absolute", width: "-webKit-fill-available", height: "-webKit-fill-available" }}></div>
-                        <div style={{ position: "absolute", right: "13%", top: "14%", textAlign: "center", color: "white" }}>
+                <div className="home-div" >
+                    <div style={{ position: "relative" }}>
+                        <div className="transparent-div-img-title" ></div>
+                        <div className="main-title" >
                             <h2 style={{ fontSize: "3vw" }}>It's always the perfect time for</h2>
                             <h1 style={{ fontSize: "7vw" }}>Transform your life</h1>
                         </div>
-                        <img style={imgSize} src={'./img/gimImagePrincipal.jpg'} alt="" />
-                        <Fade>
-                            <img style={imgWorkout} src={'./img/workout2.png'} alt="" />
+                        <img className="img-parallax" src={'./img/gimImagePrincipal.jpg'} alt="" />
+                        <Fade triggerOnce>
+                            <img className="workout-couple" src={'./img/gim8.png'} alt="" />
                         </Fade>
                     </div>
                     <div>
-                        <div style={{ width: "20%", display: "inline-block", verticalAlign: "top" }}>
+                        <div className="weightplate-div">
                             <img src={'./img/weightPlate.png'} style={{ width: "100%" }} alt="" />
                         </div>
-                        <div style={{ width: "80%", display: "inline-block", color: "white" }}>
+                        <div className="welcome">
                             <Fade style={{ margin: "7%" }}>
                                 <Slide cascade damping={0.3} direction={"up"} triggerOnce>
                                     <h3 style={{ color: "chartreuse" }}>WELCOME</h3>
@@ -104,19 +66,19 @@ function Home() {
                             </Fade>
                         </div>
                     </div>
-                    <Parallax speed={1} bgImage={'./img/gim7.jpg'} style={imgSize}>
+                    <Parallax speed={1} bgImage={'./img/gim7.jpg'} className="img-parallax">
                         <div style={{ height: "70vh" }}>
                             <AnimatedComponent>
-                                <div {...parallax} style={insideStyles}>TOP NOTCH equipment</div>
+                                <div {...parallax} className="parallax-text" >TOP NOTCH equipment</div>
                             </AnimatedComponent>
                         </div>
                     </Parallax>
                     <div style={{ marginTop: "5%" }}>
-                        <div style={{ color: "white", display: "inline-block", width: "48%" }}>
+                        <div className="text-slider">
                             <Fade>
                                 <Slide cascade damping={0.3} triggerOnce>
                                     <div >
-                                        <h2 style={{ marginLeft: "10%", color: "chartreuse" }}>Community</h2>
+                                        <h2 className="text-slider-h2">Community</h2>
                                     </div>
                                     <div style={{ marginLeft: "10%" }}>
                                         <Slide cascade damping={0.3} triggerOnce>
@@ -128,17 +90,15 @@ function Home() {
                                 </Slide>
                             </Fade>
                         </div>
-                        <div style={{ display: "inline-block", width: "50%" }}>
-                            <img src={'./img/gim5.jpg'} style={{ width: "100%", height: "auto", marginLeft: "-23%" }} alt="" />
+                        <div className="div-img">
+                            <img src={'./img/gim5.jpg'} className="gim5-img" alt="" />
                         </div>
-
                     </div>
                     <div style={{ marginTop: "5%", marginBottom: "5%" }}>
-                        <div style={{ display: "inline-block", width: "50%" }}>
-                            <img src={'./img/gim6.jpg'} style={{ width: "100%", marginLeft: "23%" }} alt="" />
-
+                        <div className="div-img">
+                            <img src={'./img/gim6.jpg'} className="gim6-img" alt="" />
                         </div>
-                        <Fade cascade style={{ color: "white", display: "inline-block", width: "48%" }}>
+                        <Fade cascade className="text-slider">
                             <Slide cascade damping={0.3} direction={"right"} triggerOnce>
                                 <div >
                                     <h2 style={{ color: "chartreuse" }}>YOUR FITNESS IS ESSENTIAL</h2>
@@ -156,15 +116,15 @@ function Home() {
                             </Slide>
                         </Fade>
                     </div>
-                    <Parallax speed={5} style={imgSize} bgImage={'./img/gim3.jpg'} strength={-100}>
+                    <Parallax speed={5} className="img-parallax" bgImage={'./img/gim3.jpg'} strength={-100}>
                         <div style={{ height: "70vh" }}>
                             <AnimatedComponent>
-                                <div style={insideStyles}>Open from 6am to 23pm</div>
+                                <div className="parallax-text">Open from 6am to 23pm</div>
                             </AnimatedComponent>
                         </div>
                     </Parallax>
                     <div style={{ marginBottom: "0% 2% 10%" }}>
-                        <div style={{ width: "80%", display: "inline-block", color: "white" }}>
+                        <div className="welcome">
                             <Fade cascade style={{ color: "white" }}>
                                 <Slide direction={"up"}>
                                 </Slide>
@@ -179,18 +139,17 @@ function Home() {
                                 </div>
                             </Fade>
                         </div>
-                        <div style={{ width: "20%", display: "inline-block", verticalAlign: "top" }}>
+                        <div className="weightplate-div" >
                             <img src={'./img/weightPlate.png'} style={{ width: "100%" }} alt="Weight plate." />
                         </div>
                     </div>
                     <Parallax speed={5}
-                        style={imgSize}
+                        className="img-parallax"
                         bgImage={'./img/gim4.jpg'}
                         strength={200}
                         renderLayer={(percentage) => (
                             <div>
                                 <div
-
                                     style={{
                                         position: "absolute",
                                         background: ` rgba(255, 255, 255,  ${percentage * 1})`,
@@ -205,15 +164,14 @@ function Home() {
                                 <Stack>
                                     <div>
                                         <img src={"./img/logo.png"}
-                                            style={{ position: "absolute", left: "50%", transform: "translate(-50%,-50%)", top: "51%", width: `${percentage * 15}%` }}
+                                            className="increasing-logo"
+                                            style={{ width: `${percentage * 15}%` }}
                                             alt="" />
                                     </div>
-                                    <div style={{ backgroundColor: "chartreuse", color: "black" }}>JOIN US</div>
                                 </Stack>
                             </div>
                         )}>
                         <div style={{ height: 700 }}>
-
                         </div>
                     </Parallax>
                     <h2 style={{ color: "chartreuse", marginLeft: "2%" }}>BLACK DOG GYM</h2>

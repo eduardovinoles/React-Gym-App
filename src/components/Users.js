@@ -87,10 +87,7 @@ function Users() {
 
   return (
     <>
-      <div style={{
-        textAlign: "left", fontFamily: "Black Ops One",
-        fontSize: "2vh", color: "chartreuse", verticalAlign: "middle", margin: "0% 5% 10% 5%"
-      }}>
+      <div className="users-div">
         {isLoading ? <LoadingSpinner /> : modifyUser}
         <EditUserModal
           modifyUser={modifyUser}
@@ -106,7 +103,7 @@ function Users() {
         />
         <Row>
           <div>
-            <Button style={{ float: "right", margin: "2% 0% 2% 0%" }} onClick={(e) => { setNewUserModalShow(true) }} >Create User</Button>
+            <Button className="create-new-user-button" onClick={(e) => { setNewUserModalShow(true) }} >Create User</Button>
           </div>
         </Row>
         <Row>
