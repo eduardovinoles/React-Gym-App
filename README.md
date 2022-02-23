@@ -1,15 +1,16 @@
 # App created with React, Backend in Mongodb and Atlas api and uploaded in Heroku.
 
-This project was bootstrapped with [Create React App].
+This ia a gym landpage build in React which fetchs a  Mongodb backend deployed in Heroku.
+C.R.U.D
+In the navigation bar you can select "users" to view the gym users list,
+also by clicking the "edit" button you can edit or delete the selected user in a modal.
+By clicking "create new user" also uses a modal to perform that.
+All the data persist and is storage in the backend.
 
-## Available Scripts
+## App in Progress
 
-In the project directory, you can run:
+In the future I will add more features 
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Login
+### Toasts 
+### New Schemas 
