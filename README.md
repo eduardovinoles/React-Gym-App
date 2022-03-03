@@ -7,6 +7,18 @@ also by clicking the "edit" button you can edit or delete the selected user in a
 By clicking "create new user" also uses a modal to perform that.
 All the data persist and is storage in the backend.
 
+## Table of Contents
+
+-  [Board](#board)
+-  [App in progress](#app-in-progress)
+
+## Board 
+
+I am using a TRELLO board to keep track of the project stories.
+You can access the board folowing the next link:
+
+https://trello.com/b/54kqjFgR/gym-app
+
 ## App in Progress
 
 In the future I will add more features 
@@ -14,3 +26,12 @@ In the future I will add more features
 ### Login
 ### Toasts 
 ### New Schemas 
+
+
+## Setup
+
+TODO: Setup instructions
+
+## Testing
+
+TODO: Testing instructions
