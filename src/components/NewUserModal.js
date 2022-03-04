@@ -42,7 +42,7 @@ function NewUserModal(props) {
                         <Form.Label>Address</Form.Label>
                         <Form.Control type="text" className='text-capitalize' placeholder="street 123" name="address" onChange={handleChange} required />
                         <Form.Label>Telephone</Form.Label>
-                        <Form.Control type="number" placeholder="123456" name="tel" onChange={handleChange} required />
+                        <Form.Control type="text" placeholder="123456" name="tel" onChange={handleChange} required />
                         <Form.Label>Type</Form.Label>
                         <Form.Control type="text" className='text-capitalize' placeholder="client" name="type" onChange={handleChange} required />
                     </Form.Group>

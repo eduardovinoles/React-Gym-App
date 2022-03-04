@@ -66,7 +66,7 @@ function EditUserModal(props) {
                         <Form.Label>Address</Form.Label>
                         <Form.Control type="text" placeholder="" className='text-capitalize' name="address" defaultValue={props.userModal.address} onChange={handleChange} />
                         <Form.Label>Telephone</Form.Label>
-                        <Form.Control type="number" placeholder="" name="tel" defaultValue={props.userModal.tel} onChange={handleChange} />
+                        <Form.Control type="text" placeholder="" name="tel" defaultValue={props.userModal.tel} onChange={handleChange} />
                         <Form.Label>Type</Form.Label>
                         <Form.Control type="text" placeholder="" className='text-capitalize' name="type" defaultValue={props.userModal.type} onChange={handleChange} />
                     </Form.Group>
