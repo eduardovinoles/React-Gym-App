@@ -116,7 +116,7 @@ function Home() {
                             </Slide>
                         </Fade>
                     </div>
-                    <Parallax speed={5} className="img-parallax" bgImage={'./img/gim3.jpg'} strength={-100}>
+                    <Parallax speed={1} className="img-parallax" bgImage={'./img/gim3.jpg'} >
                         <div style={{ height: "70vh" }}>
                             <AnimatedComponent>
                                 <div className="parallax-text">Open from 6am to 23pm</div>
