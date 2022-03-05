@@ -1,7 +1,7 @@
 import { React, useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { confirmAlert } from 'react-confirm-alert';
-import 'react-confirm-alert/src/react-confirm-alert.css';
+import Select from 'react-select'
 
 function EditUserModal(props) {
 
@@ -18,8 +18,17 @@ function EditUserModal(props) {
         })
     }, [props.userModal])
 
+    const options = [
+        { value: 'Client', label: 'Client' },
+        { value: 'Trainer', label: 'Trainer' },
+    ]
+
     function handleChange(e) {
         setUser({ ...user, [e.target.name]: e.target.value });
+    }
+
+    const handleType = (e) => {
+        setUser({ ...user, type: e.value })
     }
 
     const handleSubmit = (event) => {
@@ -68,7 +77,11 @@ function EditUserModal(props) {
                         <Form.Label>Telephone</Form.Label>
                         <Form.Control type="text" placeholder="" name="tel" defaultValue={props.userModal.tel} onChange={handleChange} />
                         <Form.Label>Type</Form.Label>
-                        <Form.Control type="text" placeholder="" className='text-capitalize' name="type" defaultValue={props.userModal.type} onChange={handleChange} />
+                        <Select 
+                            defaultValue={
+                                options.filter(option => option.label === props.userModal.type)}
+                            onChange={handleType}
+                            options={options}/>  
                     </Form.Group>
                     <Modal.Footer>
                         <Button variant="success" type="submit">Submit</Button>

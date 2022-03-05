@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import Select from 'react-select'
 
 function NewUserModal(props) {
 
@@ -11,8 +12,17 @@ function NewUserModal(props) {
         tel: ""
     })
 
+    const options = [
+        { value: 'Client', label: 'Client' },
+        { value: 'Trainer', label: 'Trainer' },
+    ]
+
     const handleChange = (e) => {
         setUser({ ...user, [e.target.name]: e.target.value })
+    }
+
+    const handleType = (e) => {
+        setUser({ ...user, type: e.value })
     }
 
     const handleSubmit = (event) => {
@@ -44,7 +54,9 @@ function NewUserModal(props) {
                         <Form.Label>Telephone</Form.Label>
                         <Form.Control type="text" placeholder="123456" name="tel" onChange={handleChange} required />
                         <Form.Label>Type</Form.Label>
-                        <Form.Control type="text" className='text-capitalize' placeholder="client" name="type" onChange={handleChange} required />
+                        <Select defaultValue={options[0]}
+                            onChange={handleType}
+                            options={options}/>
                     </Form.Group>
                     <Modal.Footer>
                         <Button variant="success" type="submit">Submit</Button>

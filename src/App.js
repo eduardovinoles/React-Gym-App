@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'react-confirm-alert/src/react-confirm-alert.css';
 import './components/general.css'
 import NavBar from './components/NavBar'
 import ContactForm from './components/ContactForm';

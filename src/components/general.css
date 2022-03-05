@@ -138,12 +138,48 @@ body {
 }
 
 .react-confirm-alert-overlay {
-    background-color: transparent;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
 .react-confirm-alert-button-group button {
     background-color: rgba(255, 0, 0, 0.74);
 }
+
+.react-confirm-alert-button-group button:hover {
+    
+        background-image:     linear-gradient(
+           to right, 
+           #E7484F,
+           #E7484F 16.65%,
+           #F68B1D 16.65%,
+           #F68B1D 33.3%,
+           #FCED00 33.3%,
+           #FCED00 49.95%,
+           #009E4F 49.95%,
+           #009E4F 66.6%,
+           #00AAC3 66.6%,
+           #00AAC3 83.25%,
+           #732982 83.25%,
+           #732982 100%,
+           #E7484F 100%
+          
+          
+          
+         );
+       animation:slidebg 2s linear infinite;
+     
+}
+
+@keyframes slidebg {
+    to {
+      background-position:20vw;
+    }
+  }
+/* .raise:hover,
+.raise:focus {
+  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
+  transform: translateY(-0.25em);
+} */
 
 .react-confirm-alert-body {
     font-family: "Black Ops One";
