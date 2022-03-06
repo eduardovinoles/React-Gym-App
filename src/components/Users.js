@@ -120,7 +120,7 @@ function Users() {
             </thead>
             <tbody style={{ verticalAlign: "middle" }}>
               {users && users.map((user) =>
-                <tr key={user._id}>
+                <tr role="button" key={user._id} onClick={()=> {console.log("test")}}>
                   <td>{user.name}</td>
                   <td>{user.type}</td>
                   <td>{user.ci}</td>
