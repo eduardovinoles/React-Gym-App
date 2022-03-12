@@ -7,6 +7,10 @@ body {
     font-family: "Black Ops One";
 }
 
+.card-body {
+    margin-top: 10%;
+}
+
 .create-new-user-button {
     float: right;
     margin: 2% 0% 2% 0%;
@@ -51,6 +55,13 @@ body {
 .gim6-img {
     width: 100%;
     margin-left: 23%;
+}
+
+.header-card {
+    clip-path: polygon(0 0,
+            100% 0,
+            100% 100%,
+            0 calc(100% - 6vw));
 }
 
 .home-div {
@@ -137,6 +148,15 @@ body {
     margin-left: 10%;
 }
 
+.profile-image {
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    position: absolute;
+    top: 25%;
+}
+
 .react-confirm-alert-overlay {
     background-color: rgba(0, 0, 0, 0.6);
 }
@@ -146,40 +166,30 @@ body {
 }
 
 .react-confirm-alert-button-group button:hover {
-    
-        background-image:     linear-gradient(
-           to right, 
-           #E7484F,
-           #E7484F 16.65%,
-           #F68B1D 16.65%,
-           #F68B1D 33.3%,
-           #FCED00 33.3%,
-           #FCED00 49.95%,
-           #009E4F 49.95%,
-           #009E4F 66.6%,
-           #00AAC3 66.6%,
-           #00AAC3 83.25%,
-           #732982 83.25%,
-           #732982 100%,
-           #E7484F 100%
-          
-          
-          
-         );
-       animation:slidebg 2s linear infinite;
-     
+
+    background-image: linear-gradient(to right,
+            #E7484F,
+            #E7484F 16.65%,
+            #F68B1D 16.65%,
+            #F68B1D 33.3%,
+            #FCED00 33.3%,
+            #FCED00 49.95%,
+            #009E4F 49.95%,
+            #009E4F 66.6%,
+            #00AAC3 66.6%,
+            #00AAC3 83.25%,
+            #732982 83.25%,
+            #732982 100%,
+            #E7484F 100%);
+    animation: slidebg 2s linear infinite;
+
 }
 
 @keyframes slidebg {
     to {
-      background-position:20vw;
+        background-position: 20vw;
     }
-  }
-/* .raise:hover,
-.raise:focus {
-  box-shadow: 0 0.5em 0.5em -0.4em var(--hover);
-  transform: translateY(-0.25em);
-} */
+}
 
 .react-confirm-alert-body {
     font-family: "Black Ops One";
@@ -223,6 +233,13 @@ body {
     position: absolute;
     width: -webKit-fill-available;
     height: -webKit-fill-available;
+}
+
+.user-card {
+    left: 10%;
+    margin-top: 10%;
+    font-size: 2vh;
+    width: 80%;
 }
 
 .weightplate-div {

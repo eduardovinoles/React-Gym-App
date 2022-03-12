@@ -9,7 +9,10 @@ function NewUserModal(props) {
         type: "",
         ci: "",
         address: "",
-        tel: ""
+        tel: "",
+        medicalCare: "",
+        birthDate: "",
+        notes: ""
     })
 
     const options = [
@@ -53,6 +56,12 @@ function NewUserModal(props) {
                         <Form.Control type="text" className='text-capitalize' placeholder="street 123" name="address" onChange={handleChange} required />
                         <Form.Label>Telephone</Form.Label>
                         <Form.Control type="text" placeholder="123456" name="tel" onChange={handleChange} required />
+                        <Form.Label>Date of Birth</Form.Label>
+                        <Form.Control type="text"  placeholder="2000/01/02" name="birthDate" onChange={handleChange} required />
+                        <Form.Label>Medical Care</Form.Label>
+                        <Form.Control type="text" className='text-capitalize' placeholder="HMS Hospital" name="medicalCare" onChange={handleChange} required />
+                        <Form.Label>Notes</Form.Label>
+                        <Form.Control as="textarea" name="notes" onChange={handleChange} required />
                         <Form.Label>Type</Form.Label>
                         <Select defaultValue={options[0]}
                             onChange={handleType}

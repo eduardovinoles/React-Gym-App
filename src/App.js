@@ -8,6 +8,7 @@ import ContactForm from './components/ContactForm';
 import Users from './components/Users';
 import Home from './components/Home'
 import Footer from './components/Footer'
+import UserDetails from './components/UserDetails';
 
 class App extends Component {
 
@@ -56,6 +57,12 @@ class App extends Component {
             <Route path="/Users" element={
               <div>
                 <Users />
+              </div>
+            }>
+            </Route>
+            <Route path="/UserDetails" element={
+              <div>
+                <UserDetails />
               </div>
             }>
             </Route>

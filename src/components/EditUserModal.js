@@ -14,7 +14,10 @@ function EditUserModal(props) {
             type: props.userModal.type,
             ci: props.userModal.ci,
             address: props.userModal.address,
-            tel: props.userModal.tel
+            tel: props.userModal.tel,
+            medicalCare: props.userModal.medicalCare,
+            birthDate: props.userModal.birthDate,
+            notes: props.userModal.notes
         })
     }, [props.userModal])
 
@@ -76,12 +79,18 @@ function EditUserModal(props) {
                         <Form.Control type="text" placeholder="" className='text-capitalize' name="address" defaultValue={props.userModal.address} onChange={handleChange} />
                         <Form.Label>Telephone</Form.Label>
                         <Form.Control type="text" placeholder="" name="tel" defaultValue={props.userModal.tel} onChange={handleChange} />
+                        <Form.Label>Medical Care</Form.Label>
+                        <Form.Control type="text" placeholder="" className='text-capitalize' name="medicalCare" defaultValue={props.userModal.medicalCare} onChange={handleChange} />
+                        <Form.Label>Date of Birth</Form.Label>
+                        <Form.Control type="text" placeholder="" name="birthDate" defaultValue={props.userModal.birthDate} onChange={handleChange} />
+                        <Form.Label>Notes</Form.Label>
+                        <Form.Control as="textarea" placeholder="" name="notes" defaultValue={props.userModal.notes} onChange={handleChange} />
                         <Form.Label>Type</Form.Label>
-                        <Select 
+                        <Select
                             defaultValue={
                                 options.filter(option => option.label === props.userModal.type)}
                             onChange={handleType}
-                            options={options}/>  
+                            options={options} />
                     </Form.Group>
                     <Modal.Footer>
                         <Button variant="success" type="submit">Submit</Button>

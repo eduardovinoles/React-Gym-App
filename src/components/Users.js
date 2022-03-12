@@ -1,8 +1,9 @@
 import { React, useState, useEffect } from 'react'
-import { Button, Table, Row } from 'react-bootstrap';
+import { Button, Table, Row } from 'react-bootstrap'
 import EditUserModal from './EditUserModal.js'
 import NewUserModal from './NewUserModal.js'
 import LoadingSpinner from './LoadingSpinner'
+import { useNavigate } from 'react-router-dom'
 
 function Users() {
 
@@ -11,6 +12,8 @@ function Users() {
   const [userModified, setState] = useState(false)
   const [users, setUsers] = useState(null)
   const [isLoading, setIsLoading] = useState(false);
+  const navigation = useNavigate()
+
 
   const [userModal, setUserModal] = useState({
     name: "",
@@ -35,6 +38,10 @@ function Users() {
     if (userModified === false) {
       setState(true)
     } else setState(false)
+  }
+
+  function goToUserDetails(id) {
+    navigation("/UserDetails",{state:{id}})
   }
 
   function findUser(id) {
@@ -103,7 +110,7 @@ function Users() {
         />
         <Row>
           <div>
-            <Button className="create-new-user-button" onClick={(e) => { setNewUserModalShow(true) }} >Create User</Button>
+            <Button className="create-new-user-button" onClick={(e) => { setNewUserModalShow(true) }}>Create User</Button>
           </div>
         </Row>
         <Row>
@@ -120,12 +127,12 @@ function Users() {
             </thead>
             <tbody style={{ verticalAlign: "middle" }}>
               {users && users.map((user) =>
-                <tr role="button" key={user._id} onClick={()=> {console.log("test")}}>
-                  <td>{user.name}</td>
-                  <td>{user.type}</td>
-                  <td>{user.ci}</td>
-                  <td>{user.address}</td>
-                  <td>{user.tel}</td>
+               <tr role="button" key={user._id}>
+                  <td onClick={(e)=> {goToUserDetails(user._id)}}>{user.name}</td>
+                  <td onClick={(e)=> {goToUserDetails(user._id)}}>{user.type}</td>
+                  <td onClick={(e)=> {goToUserDetails(user._id)}}>{user.ci}</td>
+                  <td onClick={(e)=> {goToUserDetails(user._id)}}>{user.address}</td>
+                  <td onClick={(e)=> {goToUserDetails(user._id)}}>{user.tel}</td>
                   <td> <Button variant="primary" id={user._id} onClick={(e) => { findUser(e.target.id) }}>Edit</Button> </td>
                 </tr>
               )}
