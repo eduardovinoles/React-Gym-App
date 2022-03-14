@@ -3,6 +3,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { confirmAlert } from 'react-confirm-alert';
 import Select from 'react-select'
 
+
 function EditUserModal(props) {
 
     const [user, setUser] = useState()
@@ -17,7 +18,8 @@ function EditUserModal(props) {
             tel: props.userModal.tel,
             medicalCare: props.userModal.medicalCare,
             birthDate: props.userModal.birthDate,
-            notes: props.userModal.notes
+            notes: props.userModal.notes,
+            active: props.userModal.active
         })
     }, [props.userModal])
 
@@ -27,19 +29,23 @@ function EditUserModal(props) {
     ]
 
     function handleChange(e) {
-        setUser({ ...user, [e.target.name]: e.target.value });
+        setUser({ ...user, [e.target.name]: e.target.value.toUpperCase()});
     }
 
     const handleType = (e) => {
         setUser({ ...user, type: e.value })
     }
 
+    const changeActiveState = (e) => {
+        setUser({ ...user, active: e.target.checked})
+    }
+
     const handleSubmit = (event) => {
         props.onHide()
-        console.log("handleSubmit")
         event.preventDefault();
-        console.log(user)
-        props.modifyUser(user)
+        let editedUser = user
+        console.log(editedUser)
+        props.modifyUser(editedUser)
     }
 
     const confirmDelete = () => {
@@ -72,15 +78,15 @@ function EditUserModal(props) {
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formUserModal" >
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="text" placeholder="" className='text-capitalize' name="name" defaultValue={props.userModal.name} onChange={handleChange} />
+                        <Form.Control type="text" placeholder="" name="name" defaultValue={props.userModal.name} onChange={handleChange} />
                         <Form.Label>C.I</Form.Label>
                         <Form.Control type="text" placeholder="" name="ci" defaultValue={props.userModal.ci} onChange={handleChange} />
                         <Form.Label>Address</Form.Label>
-                        <Form.Control type="text" placeholder="" className='text-capitalize' name="address" defaultValue={props.userModal.address} onChange={handleChange} />
+                        <Form.Control type="text" placeholder="" name="address" defaultValue={props.userModal.address} onChange={handleChange} />
                         <Form.Label>Telephone</Form.Label>
                         <Form.Control type="text" placeholder="" name="tel" defaultValue={props.userModal.tel} onChange={handleChange} />
                         <Form.Label>Medical Care</Form.Label>
-                        <Form.Control type="text" placeholder="" className='text-capitalize' name="medicalCare" defaultValue={props.userModal.medicalCare} onChange={handleChange} />
+                        <Form.Control type="text" placeholder="" name="medicalCare" defaultValue={props.userModal.medicalCare} onChange={handleChange} />
                         <Form.Label>Date of Birth</Form.Label>
                         <Form.Control type="text" placeholder="" name="birthDate" defaultValue={props.userModal.birthDate} onChange={handleChange} />
                         <Form.Label>Notes</Form.Label>
@@ -91,6 +97,11 @@ function EditUserModal(props) {
                                 options.filter(option => option.label === props.userModal.type)}
                             onChange={handleType}
                             options={options} />
+                        <input 
+                            type={"checkbox"}
+                            checked={user && user.active}
+                            onChange={changeActiveState}
+                        /><label>{user && !user.active ? "Not Active" : "Active"}</label>
                     </Form.Group>
                     <Modal.Footer>
                         <Button variant="success" type="submit">Submit</Button>

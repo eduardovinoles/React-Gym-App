@@ -15,13 +15,7 @@ function Users() {
   const navigation = useNavigate()
 
 
-  const [userModal, setUserModal] = useState({
-    name: "",
-    type: "",
-    ci: "",
-    address: "",
-    tel: ""
-  })
+  const [userModal, setUserModal] = useState({})
 
   useEffect(() => {
     setIsLoading(true)
@@ -66,15 +60,15 @@ function Users() {
       .catch(error => console.log('Error', error))
   }
 
-  const modifyUser = (user) => {
+  const modifyUser = (editedUser) => {
 
     const requestOptions = {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(user)
+      body: JSON.stringify(editedUser)
     }
 
-    fetch(`https://gym-app-back.herokuapp.com/user/${user._id}`, requestOptions)
+    fetch(`https://gym-app-back.herokuapp.com/user/${editedUser._id}`, requestOptions)
       .then(response => console.log('Submitted successfully'))
       .then(changeState)
       .catch(error => console.log('Form submit error', error))
@@ -119,7 +113,7 @@ function Users() {
               <tr style={{ color: "chartreuse" }}>
                 <th>Name</th>
                 <th>Type</th>
-                <th>C.I</th>
+                <th>Status</th>
                 <th>Address</th>
                 <th>Tel</th>
                 <th></th>
@@ -130,7 +124,7 @@ function Users() {
                <tr role="button" key={user._id}>
                   <td onClick={(e)=> {goToUserDetails(user._id)}}>{user.name}</td>
                   <td onClick={(e)=> {goToUserDetails(user._id)}}>{user.type}</td>
-                  <td onClick={(e)=> {goToUserDetails(user._id)}}>{user.ci}</td>
+                  <td onClick={(e)=> {goToUserDetails(user._id)}}>{user.active ? "Active" : "Not Active"}</td>
                   <td onClick={(e)=> {goToUserDetails(user._id)}}>{user.address}</td>
                   <td onClick={(e)=> {goToUserDetails(user._id)}}>{user.tel}</td>
                   <td> <Button variant="primary" id={user._id} onClick={(e) => { findUser(e.target.id) }}>Edit</Button> </td>

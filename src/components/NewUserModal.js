@@ -12,7 +12,8 @@ function NewUserModal(props) {
         tel: "",
         medicalCare: "",
         birthDate: "",
-        notes: ""
+        notes: "",
+        active: true
     })
 
     const options = [
@@ -21,7 +22,7 @@ function NewUserModal(props) {
     ]
 
     const handleChange = (e) => {
-        setUser({ ...user, [e.target.name]: e.target.value })
+        setUser({ ...user, [e.target.name]: e.target.value.toUpperCase()})
     }
 
     const handleType = (e) => {
@@ -49,23 +50,23 @@ function NewUserModal(props) {
                 <Form onSubmit={handleSubmit}>
                     <Form.Group className="mb-3" controlId="formUserModal" >
                         <Form.Label>Name</Form.Label>
-                        <Form.Control type="text" className='text-capitalize' placeholder="name" name="name" onChange={handleChange} required />
+                        <Form.Control type="text" placeholder="name" name="name" onChange={handleChange} required />
                         <Form.Label>C.I</Form.Label>
                         <Form.Control type="text" placeholder="document" name="ci" onChange={handleChange} required />
                         <Form.Label>Address</Form.Label>
-                        <Form.Control type="text" className='text-capitalize' placeholder="street 123" name="address" onChange={handleChange} required />
+                        <Form.Control type="text" placeholder="street 123" name="address" onChange={handleChange} required />
                         <Form.Label>Telephone</Form.Label>
                         <Form.Control type="text" placeholder="123456" name="tel" onChange={handleChange} required />
                         <Form.Label>Date of Birth</Form.Label>
                         <Form.Control type="text"  placeholder="2000/01/02" name="birthDate" onChange={handleChange} required />
                         <Form.Label>Medical Care</Form.Label>
-                        <Form.Control type="text" className='text-capitalize' placeholder="HMS Hospital" name="medicalCare" onChange={handleChange} required />
+                        <Form.Control type="text" placeholder="HMS Hospital" name="medicalCare" onChange={handleChange} required />
                         <Form.Label>Notes</Form.Label>
-                        <Form.Control as="textarea" name="notes" onChange={handleChange} required />
+                        <Form.Control as="textarea" name="notes" onChange={handleChange} />
                         <Form.Label>Type</Form.Label>
                         <Select defaultValue={options[0]}
                             onChange={handleType}
-                            options={options}/>
+                            options={options}/>  
                     </Form.Group>
                     <Modal.Footer>
                         <Button variant="success" type="submit">Submit</Button>
