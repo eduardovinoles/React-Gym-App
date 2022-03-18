@@ -1,6 +1,6 @@
 .app {
     background-color: black;
-    font-size: 2vw;
+    font-size: 1rem;
 }
 
 body {
@@ -27,6 +27,10 @@ body {
 
 .display-none {
     display: none;
+}
+
+.form-control {
+    font-family: 'Fredoka', sans-serif;
 }
 
 .form-page {
@@ -57,6 +61,10 @@ body {
     margin-left: 23%;
 }
 
+h3 {
+    -webkit-text-stroke: 0.3px black
+}
+
 .header-card {
     clip-path: polygon(0 0,
             100% 0,
@@ -71,6 +79,13 @@ body {
 .img-parallax {
     width: -webKit-fill-available;
     margin: 0% 2%;
+}
+
+.inactive-user {
+    top: 50%;
+    position: absolute;
+    display: inline-block;
+    color:#F68B1D;
 }
 
 .increasing-logo {
@@ -90,11 +105,16 @@ body {
     font-size: 2vw;
 }
 
+label {
+    color: #ec0926;
+    -webkit-text-stroke: 0.2px black
+}
+
 .loading-spinner {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    animation: spinner 1.5s linear infinite;
+    animation: spinner 4s linear infinite;
 }
 
 .logo-nav {
@@ -150,11 +170,12 @@ body {
 
 .profile-image {
     vertical-align: middle;
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
+    border: 4px solid chartreuse;
     border-radius: 50%;
     position: absolute;
-    top: 25%;
+    top: 12%;
 }
 
 .react-confirm-alert-overlay {
@@ -217,6 +238,10 @@ body {
     z-index: 1;
 }
 
+.table tr>td {
+    font-family: 'Fredoka', sans-serif;
+}
+
 .text-slider {
     color: white;
     display: inline-block;
@@ -238,8 +263,16 @@ body {
 .user-card {
     left: 10%;
     margin-top: 10%;
-    font-size: 2vh;
+    font-size: 1rem;
     width: 80%;
+}
+
+.users-div {
+    text-align: left;
+    font-size: 2vh;
+    color: chartreuse;
+    vertical-align: middle;
+    margin: 0% 5% 10% 5%;
 }
 
 .weightplate-div {
@@ -262,14 +295,6 @@ body {
     width: 36%;
 }
 
-.users-div {
-    text-align: left;
-    font-size: 2vh;
-    color: chartreuse;
-    vertical-align: middle;
-    margin: 0% 5% 10% 5%;
-}
-
 @keyframes spinner {
     0% {
         transform: rotate(0deg);
@@ -279,8 +304,3 @@ body {
         transform: rotate(360deg);
     }
 }
-
-/* Checkbox */
-
-  
-  

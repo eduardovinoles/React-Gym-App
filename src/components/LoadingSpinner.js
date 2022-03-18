@@ -6,6 +6,7 @@ function LoadingSpinner() {
       <div className="loading-spinner">
       <img src={'./img/weightPlate.png'} className="loading-spinner" alt="" />
       </div>
+      <div style={{textAlign:"center"}}>Loading..</div>
     </div>
   );
 }

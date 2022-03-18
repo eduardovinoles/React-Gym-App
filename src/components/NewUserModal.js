@@ -1,4 +1,4 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import Select from 'react-select'
 
@@ -16,13 +16,21 @@ function NewUserModal(props) {
         active: true
     })
 
+    const [isValid, setIsValid] = useState(false);
+
+   
+    useEffect(() => {
+        setIsValid(user.type ? true : false);
+    }, [user]);
+
+
     const options = [
         { value: 'Client', label: 'Client' },
         { value: 'Trainer', label: 'Trainer' },
     ]
 
     const handleChange = (e) => {
-        setUser({ ...user, [e.target.name]: e.target.value.toUpperCase()})
+        setUser({ ...user, [e.target.name]: e.target.value.toUpperCase() })
     }
 
     const handleType = (e) => {
@@ -58,18 +66,19 @@ function NewUserModal(props) {
                         <Form.Label>Telephone</Form.Label>
                         <Form.Control type="text" placeholder="123456" name="tel" onChange={handleChange} required />
                         <Form.Label>Date of Birth</Form.Label>
-                        <Form.Control type="text"  placeholder="2000/01/02" name="birthDate" onChange={handleChange} required />
+                        <Form.Control type="text" placeholder="2000/01/02" name="birthDate" onChange={handleChange} required />
                         <Form.Label>Medical Care</Form.Label>
                         <Form.Control type="text" placeholder="HMS Hospital" name="medicalCare" onChange={handleChange} required />
                         <Form.Label>Notes</Form.Label>
                         <Form.Control as="textarea" name="notes" onChange={handleChange} />
                         <Form.Label>Type</Form.Label>
-                        <Select defaultValue={options[0]}
+                        <Select
                             onChange={handleType}
-                            options={options}/>  
+                            options={options} />
+                        {!isValid && <p>You must choose a value</p>}
                     </Form.Group>
                     <Modal.Footer>
-                        <Button variant="success" type="submit">Submit</Button>
+                        <Button variant="success" type="submit" disabled={!isValid}>Submit</Button>
                     </Modal.Footer>
                 </Form>
             </Modal.Body>
