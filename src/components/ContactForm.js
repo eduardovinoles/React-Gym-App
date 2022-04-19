@@ -26,7 +26,7 @@ function ContactForm() {
                             <Form.Control type="text" placeholder="123456" required />
                         </Form.Group>
                         <Form.Group>
-                            <Form.Label>Writhe a comment:</Form.Label>
+                            <Form.Label>Write a comment:</Form.Label>
                             <Form.Control as="textarea"
                                 placeholder="" />
                         </Form.Group>

@@ -8,7 +8,7 @@ import WebFont from 'webfontloader'
 
 WebFont.load({
     google: {
-        families: ["Lobster Two", "Black Ops One"]
+        families: ["Fredoka", "Black Ops One"]
     }
 });
 
@@ -82,21 +82,21 @@ function Home() {
                                     </div>
                                     <div style={{ marginLeft: "10%" }}>
                                         <Slide cascade damping={0.3} triggerOnce>
-                                            <p>You’re not just joining a gym.</p>
-                                            <p>You’re joining a supportive community of like-minded people</p>
-                                            <p>who are here to give you the encouragement you need.</p>
+                                            <h3>You’re not just joining a gym.</h3>
+                                            <h3>You’re joining a supportive community of like-minded people</h3>
+                                            <h3>who are here to give you the encouragement you need.</h3>
                                         </Slide>
                                     </div>
                                 </Slide>
                             </Fade>
                         </div>
                         <div className="div-img">
-                            <img src={'./img/gim5.jpg'} className="gim5-img" alt="" />
+                            <img src={'./img/gym10.jpg'} className="gim5-img" alt="" />
                         </div>
                     </div>
                     <div style={{ marginTop: "5%", marginBottom: "5%" }}>
                         <div className="div-img">
-                            <img src={'./img/gim6.jpg'} className="gim6-img" alt="" />
+                            <img src={'./img/gim11.jpg'} className="gim6-img" alt="" />
                         </div>
                         <Fade cascade className="text-slider">
                             <Slide cascade damping={0.3} direction={"right"} triggerOnce>
@@ -105,12 +105,12 @@ function Home() {
                                 </div>
                                 <div>
                                     <Slide cascade damping={0.3} direction={"right"} triggerOnce>
-                                        <p>At Black Dog</p>
-                                        <p>we believe your fitness is essential™.</p>
-                                        <p>Making your overall physical and</p>
-                                        <p>mental wellness a priority</p>
-                                        <p>will melt away stress, decrease anxiety, and increase your overall</p>
-                                        <p>positive energy levels!</p>
+                                        <h3>At Black Dog</h3>
+                                        <h3>we believe your fitness is essential™.</h3>
+                                        <h3>Making your overall physical and</h3>
+                                        <h3>mental wellness a priority</h3>
+                                        <h3>will melt away stress, decrease anxiety, and increase your overall</h3>
+                                        <h3>positive energy levels!</h3>
                                     </Slide>
                                 </div>
                             </Slide>

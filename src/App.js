@@ -9,36 +9,10 @@ import Users from './components/Users';
 import Home from './components/Home'
 import Footer from './components/Footer'
 import UserDetails from './components/UserDetails';
+import User from './User'
 
-class App extends Component {
-
-  addTask = (title, description) => {
-    const newTask = {
-      title: title,
-      description: description,
-      id: this.state.tasks.length + 1
-    }
-    this.setState({
-      tasks: [...this.state.tasks, newTask]
-    })
-  }
-
-  deleteTask = (id) => {
-    const newTasks = this.state.tasks.filter(task => task.id !== id)
-    this.setState({ tasks: newTasks })
-  }
-
-  checkDone = (id) => {
-    const newTasks = this.state.tasks.map(task => {
-      if (task.id === id) {
-        task.done = !task.done
-      }
-      return task
-    })
-    this.setState({ tasks: newTasks })
-  }
-
-  render() {
+function App() {
+ 
     return (
       <div className='app'>
         <BrowserRouter>
@@ -66,11 +40,17 @@ class App extends Component {
               </div>
             }>
             </Route>
+            <Route path="/User" element={
+              <div>
+                <User />
+              </div>
+            }>
+            </Route>
           </Routes>
           <Footer />
         </BrowserRouter>
       </div>
     )
   }
-}
+
 export default App;

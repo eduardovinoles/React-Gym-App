@@ -18,6 +18,16 @@ function Users() {
   const [userModal, setUserModal] = useState({})
 
   useEffect(() => {
+  
+    fetch('https://gym-app-back.herokuapp.com/routines')
+      .then(response => response.json())
+      .then(data => {
+        console.log(data)
+        
+      });
+  }, []);
+
+  useEffect(() => {
     setIsLoading(true)
     fetch('https://gym-app-back.herokuapp.com/user')
       .then(response => response.json())
