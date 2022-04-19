@@ -23,7 +23,7 @@ const Footer = () => <footer className=" footer-styles page-footer font-small bl
         </div>
     </div>
     <div className="footer-copyright text-center py-3">© 2022 Copyright:
-        <a href="#!"> BlackDog Gym.</a>
+        <a href=""> BlackDog Gym.</a>
     </div>
 </footer>
 export default Footer

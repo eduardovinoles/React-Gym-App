@@ -1,33 +1,60 @@
 import { React, useEffect, useState } from 'react'
 import { Button, Card, Row, Col, Form } from 'react-bootstrap';
 import { useLocation } from 'react-router-dom';
-import TrainningCard from './TrainningCard';
+import TrainingCard from './TrainingCard';
+import LoadingSpinner from './LoadingSpinner'
 
 
 function UserDetails() {
 
     const location = useLocation();
     let id = location.state.id
+    let clientId = id
 
     let currentDate = new Date()
     let date = currentDate.toString().slice(0, 15)
     let currentWeekDay = currentDate.toString().slice(0, 3)
 
     const [user, setUser] = useState(null)
-    const [trainingSesion, setSesion] = useState([])
+    const [trainingSession, setTrainingSesion] = useState([])
+    const [historyRoutines, setHistoryRoutines] = useState([])
+    const [dayRoutines, setDayRoutines] = useState([])
+    const [todayRoutine, setTodayRoutine] = useState([])
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
+        setIsLoading(true)
         fetch(`https://gym-app-back.herokuapp.com/user/${id}`)
             .then(response => response.json())
             .then(data => {
-                currentTrainingDay(currentWeekDay)
                 setUser(data)
+                getRoutines()
+                setIsLoading(false)
             });
     }, []);
 
+    //get the last exercise done 
+    useEffect(() => {
+        //get the last routine
+        if (dayRoutines && historyRoutines) {
+            let i = currentTrainingDay(currentWeekDay)
+            setTodayRoutine(dayRoutines[i])
+
+            let exerciseHistory = historyRoutines.filter(x => x.name === todayRoutine.name)
+            let latest = exerciseHistory.sort((a, b) => new Date(b.date) - new Date(a.date))[0]
+            if (latest) {
+                let lastDate = latest.date
+                latest.date = lastDate.toString().slice(0, 10)
+            }
+            //set today training from last exercise
+            setTrainingSesion(latest)
+
+        }
+    }, [historyRoutines, dayRoutines, currentWeekDay, todayRoutine]);
+
+
     function handleChange(e) {
         setUser({ ...user, [e.target.name]: e.target.value.toUpperCase() });
-        console.log(user)
     }
 
     const modifyUser = () => {
@@ -46,118 +73,76 @@ function UserDetails() {
     const currentTrainingDay = (currentWeekDay) => {
         switch (currentWeekDay) {
             case "Mon":
-                return setSesion(training1);
+                return 0;
             case "Tue":
-                return setSesion(training2);
+                return 1;
             case "Wed":
-                return setSesion(training3);
+                return 2;
             case "Thu":
-                return setSesion(training4);
+                return 3;
             case "Fri":
-                return setSesion(training5);
+                return 4;
             case "Sat":
-                return setSesion(training6);
+                return 5;
             default:
+                return 0;
         }
     }
 
     function modifyTrainingSesion(e) {
-        let currentRow = e.target.closest("tr").id
-        let inputToModify = e.target.name
-        let value = e.target.value
-        trainingSesion[currentRow][inputToModify] = value
-        //console.log(trainingSesion[currentRow])
+        let exerciseName = e.target.closest("tr").id
+        let newArray = todayRoutine
+
+        newArray.exercises.forEach(exercise => {
+            if (exercise.name === exerciseName) {
+                exercise[e.target.name] = e.target.value
+                setTrainingSesion(newArray)
+            }
+        });
     }
 
-    
-
     const saveSesion = () => {
-      //this function populate the data base 
+        //this function populate the data base 
         const populateRoutines = {
             clientId: user._id,
             date: Date(),
-            exercise: "Ankle Crunches",
-            series: 10,
-            repetitions: 15
+            name: trainingSession.name,
+            day: trainingSession.day,
+            exercises: [...trainingSession.exercises]
         }
 
-       
-        /*    let requestOptions = {
-               method: 'POST',
-               headers: { 'Content-Type': 'application/json' },
-               body: JSON.stringify(populateRoutines)
-           }
-           fetch(`https://gym-app-back.herokuapp.com/routines`, requestOptions)
-               .then(response => console.log(response.json()))
-               .catch(error => console.log('Error', error)) 
-     */
-   
-       
+        let requestOptions = {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(populateRoutines)
+        }
+        fetch(`https://gym-app-back.herokuapp.com/routines`, requestOptions)
+            .then(response => console.log(response.json()))
+            .catch(error => console.log('Error', error))
     }
 
+    const getRoutines = async () => {
+        await fetch(`https://gym-app-back.herokuapp.com/dayroutine`)
+            .then(response => response.json())
+            .then(data => {
+                setDayRoutines(data)
+            })
 
-
-
-    let training1 = {
-        title: "Monday training",
-        row1: { exercise: "Lateral Raises", muscle: "Shoulders", reps: 3, sets: 12, rest: 30 },
-        row2: { exercise: "Front Raises", muscle: "Shoulders", reps: 3, sets: 12, rest: 30 },
-        row3: { exercise: "Front Lunges", muscle: "Quads & Gluteus", reps: 3, sets: 12, rest: 60 },
-        row4: { exercise: "Squats", muscle: "Quads & Gluteus", reps: 3, sets: 12, rest: 60 },
-        row5: { exercise: "Ankle Crunches", muscle: "Abdominals", reps: 3, sets: 30, rest: 10 }
+        await fetch(`https://gym-app-back.herokuapp.com/routines/${clientId}`)
+            .then(response => response.json())
+            .then(data => {
+                setHistoryRoutines(data)
+            })
+            .catch(error => console.log('Error', error))
     }
 
-    let training2 = {
-        title: "Tuesday training",
-        row1: { exercise: "Flyes", muscle: "Chest", reps: 3, sets: 12, rest: 30 },
-        row2: { exercise: "Chest Press", muscle: "Chest", reps: 3, sets: 12, rest: 30 },
-        row3: { exercise: "Triceps Kickback", muscle: "Triceps", reps: 3, sets: 12, rest: 60 },
-        row4: { exercise: "Dips", muscle: "Triceps", reps: 3, sets: 15, rest: 45 },
-        row5: { exercise: "Interval Training", muscle: "", reps: 0, sets: 0, rest: 0 }
-    }
-
-    let training3 = {
-        title: "Wednesday training",
-        row1: { exercise: "Push-ups", muscle: "Entire upper body", reps: 3, sets: 20, rest: 30 },
-        row2: { exercise: "Reverse leg curls", muscle: "Gluteus", reps: 3, sets: 15, rest: 30 },
-        row3: { exercise: "Alternating Leg Raises", muscle: "Abs", reps: 2, sets: 30, rest: 30 },
-        row4: { exercise: "Twist & Slot", muscle: "Abs/Obliqs", reps: 2, sets: 30, rest: 30 },
-        row5: { exercise: "Interval Training", muscle: "", reps: 0, sets: 0, rest: 0 }
-    }
-
-    let training4 = {
-        title: "Thursday training",
-        row1: { exercise: "Hammer curls", muscle: "Biceps", reps: 3, sets: 12, rest: 30 },
-        row2: { exercise: "Bicep Curls", muscle: "Biceps", reps: 3, sets: 15, rest: 30 },
-        row3: { exercise: "One Arm Rows", muscle: "Backs", reps: 3, sets: 12, rest: 45 },
-        row4: { exercise: "Bent Over Rows", muscle: "Back", reps: 3, sets: 12, rest: 45 },
-        row5: { exercise: "Interval Training", muscle: "", reps: 0, sets: 0, rest: 0 }
-    }
-
-    let training5 = {
-        title: "Friday training",
-        row1: { exercise: "Stiff-Leg Deadlifts", muscle: "Armstrings", reps: 3, sets: 12, rest: 60 },
-        row2: { exercise: "Step-ups", muscle: "Arms & Quads", reps: 3, sets: 12, rest: 60 },
-        row3: { exercise: "Push Throughs", muscle: "Abs", reps: 3, sets: 30, rest: 30 },
-        row4: { exercise: "Reverse Crunch", muscle: "Abs", reps: 3, sets: 30, rest: 30 },
-        row5: { exercise: "Interval Training", muscle: "", reps: 0, sets: 0, rest: 0 }
-    }
-
-    let training6 = {
-        title: "Saturday training",
-        row1: { exercise: "Standing Calve Raises", muscle: "Calf", reps: 3, sets: 15, rest: 15 },
-        row2: { exercise: "Seated Calve Raises", muscle: "Calf", reps: 3, sets: 15, rest: 15 },
-        row3: { exercise: "Interval Training", muscle: "", reps: 0, sets: 0, rest: 0 },
-        row4: { exercise: "", muscle: "", reps: 0, sets: 0, rest: 0 },
-        row5: { exercise: "", muscle: "", reps: 0, sets: 0, rest: 0 }
-    }
 
     return (
-        <div>
-            {user &&
+        <div className="blurred">
+            {isLoading ? <LoadingSpinner /> : user &&
                 <Row>
                     <Col xs={12} md={6}><Card className='user-card col-6'>
-                        <Card.Img className='header-card' variant="top" src="./img/plates.jpg" />
+                        <Card.Img className='header-card' variant="top" src="./img/gim3.jpg" />
                         <Card.Body>
                             <div><img className='profile-image' src='./img/profileImage.jpg' alt='profile' /></div>
                             <Card.Title></Card.Title>
@@ -185,11 +170,20 @@ function UserDetails() {
                     </Col>
                     <Col xs={12} md={6}>
                         {user.active ?
-                            <TrainningCard
-                                trainingSesion={trainingSesion}
+                            todayRoutine && <TrainingCard
+                                trainingSession={todayRoutine}
                                 modifyTrainingSesion={modifyTrainingSesion}
                                 saveSesion={saveSesion}
                             /> : <div className="inactive-user"><h2>You are a NOT active user !!</h2></div>
+                        }
+                    </Col>
+                    <Col xs={12} md={6}>
+                        {user.active ?
+                            trainingSession && <TrainingCard
+                                trainingSession={trainingSession}
+                                modifyTrainingSesion={modifyTrainingSesion}
+                                saveSesion={saveSesion}
+                            /> : <div className="inactive-user"></div>
                         }
                     </Col>
                 </Row>}

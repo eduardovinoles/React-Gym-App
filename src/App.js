@@ -9,10 +9,10 @@ import Users from './components/Users';
 import Home from './components/Home'
 import Footer from './components/Footer'
 import UserDetails from './components/UserDetails';
+import User from './User'
 
-class App extends Component {
-
-  render() {
+function App() {
+ 
     return (
       <div className='app'>
         <BrowserRouter>
@@ -40,11 +40,17 @@ class App extends Component {
               </div>
             }>
             </Route>
+            <Route path="/User" element={
+              <div>
+                <User />
+              </div>
+            }>
+            </Route>
           </Routes>
           <Footer />
         </BrowserRouter>
       </div>
     )
   }
-}
+
 export default App;
