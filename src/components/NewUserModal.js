@@ -83,6 +83,6 @@ function NewUserModal(props) {
                 </Form>
             </Modal.Body>
         </Modal >
-    );
+    )
 }
 export default NewUserModal

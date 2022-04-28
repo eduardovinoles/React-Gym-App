@@ -98,8 +98,8 @@ function Users() {
 
   return (
     <>
-      <div className="users-div">
-        {isLoading ? <LoadingSpinner /> : modifyUser}
+       {isLoading ? <LoadingSpinner /> : 
+       <div className="users-div">
         <EditUserModal
           modifyUser={modifyUser}
           show={editModalShow}
@@ -143,7 +143,7 @@ function Users() {
             </tbody>
           </Table>
         </Row>
-      </div>
+      </div> }
     </>
   )
 }
