@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import  {React, Component, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'react-confirm-alert/src/react-confirm-alert.css';
@@ -9,14 +9,14 @@ import Users from './components/Users';
 import Home from './components/Home'
 import Footer from './components/Footer'
 import UserDetails from './components/UserDetails';
-import User from './User'
+import User from './User';
 
 function App() {
- 
+  
     return (
       <div className='app'>
         <BrowserRouter>
-          <NavBar />
+          <NavBar  />
           <Routes>
             <Route path="/" element={<Home />}>
             </Route>
