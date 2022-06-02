@@ -5,7 +5,7 @@ C.R.U.D
 In the navigation bar you can select "users" to view the gym users list,
 also by clicking the "edit" button you can edit or delete the selected user in a modal.
 By clicking "create new user" also uses a modal to perform that.
-All the data persist and is storage in the backend.
+All the data persist and is stored in the backend.
 
 ## Table of Contents
 
